@@ -10,3 +10,6 @@
 ## **5. Lifecycle and Legacy**
 
 ## **6. Critical Analysis**
+
+## **REFERENCES**
+M. Klein, "Securing Record Communications: The TSEC/KW-26," National Security Agency, Center for Cryptologic History, Brochure, Fort George G. Meade, MD.
