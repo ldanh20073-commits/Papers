@@ -1,5 +1,13 @@
 # **Analysis of the TSEC KW-26 Electronic Encryption Device**
+Danh H. Le  
+College of Engineering and Computer Science  
+University of Central Florida  
+Orlando, Florida, USA  
+da535059@ucf.edu
+July 20th, 2026
+#
 ## **1. Introduction**
+
 
 ## **2. History of Development**
 
