@@ -13,6 +13,10 @@ The TSEC/KW-26 cryptographic equipment was the first wide-scale, electronic encr
 
 ## **2. History of Development**
 
+The implementations of encryption technology surrounding and utilizing the TSEC/KW-26 equipment saw extensive progression throughout the 20th century. Under NSA leadership, including the chief of records and data Howard Barlow, research was launched into Electronic Teletypewritter (TTY) encryption. This type of encryption in the early to late 1910s provided the foundations for transitioning to more automated and electric equipment. In 1952, technicians at NSA furthered their studies by synthesizing a "proof of concept" model that focused on one-time key cards (Klein 6). A common fill device (CFD) was utilized, where the insertion of a key card would lock it in place. After use, the card was severed in order to maintain security regulations regarding COMSEC.
+
+
+
 ## **3. General Characteristics**
 
 ## **4. Usage Domains**
