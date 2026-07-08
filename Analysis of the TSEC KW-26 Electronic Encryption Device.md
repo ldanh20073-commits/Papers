@@ -53,7 +53,7 @@ The United States army also deployed units for ground and air operations. The KW
 
 ## **5. Lifecycle and Legacy**
 
-## **6. Confidentiality, Integrity, and Availability (CIA Triad) Analysis**
+## **6. Impacts on CIA Triad Cryptography**
 
 ## **7. Critical Analysis**
 
