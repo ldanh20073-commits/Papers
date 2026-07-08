@@ -13,7 +13,9 @@ The TSEC/KW-26 cryptographic equipment was the first wide-scale, electronic encr
 
 ## **2. History of Development**
 
-The implementations of encryption technology surrounding and utilizing the TSEC/KW-26 equipment saw extensive progression throughout the 20th century. Under NSA leadership, including the chief of records and data Howard Barlow, research was launched into Electronic Teletypewriter (TTY) encryption. This type of encryption in the early to late 1910s provided the foundations for transitioning to more automated and electric equipment. In 1952, technicians at NSA furthered their studies by synthesizing a "proof of concept" model that focused on one-time key cards, leading to a more modern hardware (Klein 6). A common fill device (CFD) was utilized, where the insertion of a key card would lock it in place. After use, the card was severed in order to maintain security regulations regarding COMSEC. This marks the start of the NSA's first KW-26 experimental model.
+The implementations of encryption technology surrounding and utilizing the TSEC/KW-26 equipment saw extensive progression throughout the 20th century. Its ultimate purpose was to provide secure encryption protections for communications across the United States. Its developers aimed to take advantage of automated, electronic systems to enhance data security and efficiency. Under NSA leadership, including the chief of records and data Howard Barlow, research was launched into Electronic Teletypewriter (TTY) encryption. This type of encryption in the early to late 1910s provided the foundations for transitioning to more automated and electric equipment. 
+
+In 1952, technicians at NSA furthered their studies by synthesizing a "proof of concept" model that focused on one-time key cards, leading to a more modern hardware (Klein 6). A common fill device (CFD) was utilized, where the insertion of a key card would lock it in place. After use, the card was severed in order to maintain security regulations regarding COMSEC. This marks the start of the NSA's first KW-26 experimental model.
 
 However, development with electronic encryption equipment can be more predominantly traced to engineer Gilbert S. Vernam. In 1917, he invented a mechanical method for tap-mixing with online encryption. Vernam is able to obtain patents and the technology becomes commercialized by companies like AT&T (Klein 3). It was not until post World War 2 (WW2), that more robust and defined technology would gain traction for widespread use. The success of cipher algorithms in the war prompted the need for cryptographic security for data traffic in the United States.
 
@@ -37,11 +39,23 @@ As a result, manual systems were replaced across the military to allow for more 
 
 ## **3. General Characteristics**
 
+
+
 ## **4. Usage Domains**
+
+Across its lifetime, the KW-26 functioned as the standardized encryption equipment for electronic data security. One of its most important networks was CRITICOMM, the first communication system to use the initial 1,500 KW-26 units to support the National SIGINT mission (Klein 10). CRITTICOMM was established by the Joint Chiefs of Staff (JCS), with heavy focus on developing secure point-to-point circuits in a cryptosystem. The KW-26 allowed for a more secure network across sensitive data structures for the government. Furthermore, the equipment was often used as the primary hardware for new organizations in the United States.
+
+>In the early days of the Defense Communications Agency (DCA)the KW-26 was the principal encryptor for the AUTODIN trunks (Klein 11).
+
+AUTODIN were massive communication trunks used by the DCA for automating digital networks. The KW-26 provided the security for lines within this large system. Overseas, the equipment was also adapted for use by the navy, being placed in ships abroad and built to withstand the rough conditions of the sea (Klein 10). The equipment was placed onboard coastal ships and shore stations, being able to operate and take shock vibrations from enemy vessels. This helped maintain the integrity of the equipment, while also providing reliable technology for use during international conflicts.
+
+The United States army also deployed units for ground and air operations. The KW-26 helped encrypt communications for tactical missions, being widespread across the military. Finally, the hardware operated for point-to-point circuits for the CIA and Department of State (Klein 11). Point-to-point refers to data that travels in segments to individual locations before reaching its final destination, along with fixed plant sites that offer exchange of communication data. This ensures that the data is protected and not intercepted during transmission. TTY traffic and international communications were protected using KW-26 encryption, allowing foreign offices to send critical information to and from Washington D.C.
 
 ## **5. Lifecycle and Legacy**
 
-## **6. Critical Analysis**
+## **6. Confidentiality, Integrity, and Availability (CIA Triad) Analysis**
+
+## **7. Critical Analysis**
 
 ## **REFERENCES**
 M. Klein, "Securing Record Communications: The TSEC/KW-26," National Security Agency, Center for Cryptologic History, Brochure, Fort George G. Meade, MD.
