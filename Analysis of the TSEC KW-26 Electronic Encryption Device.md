@@ -26,7 +26,14 @@ As a result, manual systems were replaced across the military to allow for more 
 * 1918: AT&T displays and presents Vernam's model to the U.S. military
 * 1919: Vernam is granted a patent for this encryption technology
 * 1920s: AT&T attemps marketing and commercialization of the Vernam system, failing to reach worldwide scale
-* 1939 - 1945 (WW2): 
+* 1939 - 1945 (WW2): U.S. military adopts the one-time encryption tape for government use
+* 1947: The transistor, used for secure TTY technology, had been invented, although not ready for use.
+* 1949: Multiple cryptographic agencies were merged into the Armed Forces Security Agency
+* 1952 - 1954: The NSA takes over encryption technology in the U.S., developing equipment for overseas circuits and one-time key cards, forming the KW-26
+* 1955: The Burroughs Corporation creates a "proof of concept" model and gains a contract for future development models
+* 1957: Production of the initial 1,500 units of the KW-26 completed under Burroughs
+* 1960s: The KW-26 is expanded to large scale, with deployment to over 14,000 units
+* mid-1980s: The KW-26 system is decommissioned by the NSA, replaced by the solid-state KG-84 to continue operations (Klein 1-12).
 
 ## **3. General Characteristics**
 
