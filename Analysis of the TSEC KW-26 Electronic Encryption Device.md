@@ -41,6 +41,8 @@ As a result, manual systems were replaced across the military to allow for more 
 
 The KW-26 carried major changes and improves within its system for data encryption technology. It utilized one-time tapes as key cards, inserted into a CFD, to maintain the practices and protections of COMSEC (Klein 6). This ensured that keys would only be used once, and this allowed the equipment to have strong security capabilities. Furthermore, the hardware used interconnected circuit boards, being unique to the KW-26. It contained more than 800 Bi-Stable Magnetic Elements (BIMAG) cores, which used binary arithmetic to effectively encrypt and manage communication transmissions. The BIMAG cores worked alongside around 50 vacuum-tube driver circuits and their terminals took up about half the space of standard equipment (Klein 5). These hardware features made the KW-26 uniquely distinct and able to operate effectively across major usage domains.
 
+In addition to its new physical components, the improved hardware changed the way the system performed encryption actions and operations. The encryption algorithm utilized by the KW-26 was based on the Vernam modulo-2 convention, which used the exclusive OR (XOR) logic gate, to encrypt the plaintext message using a keystream. The keystream itself was generated using a shift register based on the Fibonacci vice Koken motion (Klein 5-6). These specifications in the KW-26 system helped protect sensitive data and ensure protected communications across networks.
+
 
 
 ## **4. Usage Domains**
