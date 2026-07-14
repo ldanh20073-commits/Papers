@@ -66,7 +66,11 @@ The KW-26 and its efficient encryption technologies operated throughout its usag
 * 1955: The first proof of concept models are delivered, allowing for final engineering contracts to be given and signed
 * 1957: The mass production of over 1,500 units of the KW-26 begin and are integrated into the CRITICOMM network (Klein 4-10)
 
-As seen throughout the KW-26 developmental timeline, the equipment saw major changes and creation during the 1950s. After this period of construction, the system was deployed and operated until the end of the Cold War. The equipment was effectively delivered around the globe with over 14,000 units being manufactured. This allowed for massive military operations and the protection of numerous protections for sensitive communications and data. At the end of the KW-26's life, the equipment was decommissioned by the NSA during the mid-1980s (Klein 11). 
+As seen throughout the KW-26 developmental timeline, the equipment saw major changes and creation during the 1950s. After this period of construction, the system was deployed and operated until the end of the Cold War. The equipment was effectively delivered around the globe with over 14,000 units being manufactured (Klein 10). This allowed for massive military operations and the protection of numerous protections for sensitive communications and data. 
+
+At the end of the KW-26's life, the equipment was decommissioned by the NSA during the mid-1980s (Klein 11). Over the course of multiple years, the NSA carried out a strict "demilitarization process" where the cryptographic elements, such as key cards, were securely disposed. The remaining hardware and metal were stripped and melted into scrap (Klein 12). After its decommission, the KW-26 was replaced by the TSEC/KG-84, which used an advanced solid-state encryptor (Klein 11). 
+
+The new successor technology allowed for more adaptive systems and helped expand operations that required more effective equipment. This marked the end of the KW-26, where the encryption technology played a major role in shaping future encryption systems. The system dominanted the 20th century encryption fields, and it paved the way for more advanced systems in the decades to come.
 
 ## **6. Evaluations of CIA Triad**
 
