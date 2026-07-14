@@ -66,7 +66,7 @@ The KW-26 and its efficient encryption technologies operated throughout its usag
 * 1955: The first proof of concept models are delivered, allowing for final engineering contracts to be given and signed
 * 1957: The mass production of over 1,500 units of the KW-26 begin and are integrated into the CRITICOMM network (Klein 4-10)
 
-
+As seen throughout the KW-26 developmental timeline, the equipment saw major changes and creation during the 1950s. After this period of construction, the system was deployed and operated until the end of the Cold War. The equipment was effectively delivered around the globe with over 14,000 units being manufactured. This allowed for massive military operations and the protection of numerous protections for sensitive communications and data. At the end of the KW-26's life, the equipment was decommissioned by the NSA during the mid-1980s (Klein 11). 
 
 ## **6. Evaluations of CIA Triad**
 
