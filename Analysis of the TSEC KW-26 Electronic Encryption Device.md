@@ -29,7 +29,7 @@ As a result, manual systems were replaced across the military to allow for more 
 * 1919: Vernam is granted a patent for this encryption technology
 * 1920s: AT&T attempts marketing and commercialization of the Vernam system, failing to reach worldwide scale
 * 1939 - 1945 (WW2): U.S. military adopts the one-time encryption tape for government use
-* 1947: The transistor, used for secure TTY technology, had been invented, although not ready for use.
+* 1947: The transistor, used for secure TTY technology, had been invented, although not ready for use
 * 1949: Multiple cryptographic agencies were merged into the Armed Forces Security Agency
 * 1952 - 1954: The NSA takes over encryption technology in the U.S., developing equipment for overseas circuits and one-time key cards, forming the KW-26
 * 1955: The Burroughs Corporation creates a "proof of concept" model and gains a contract for future development models
@@ -59,7 +59,16 @@ The United States army also deployed units for ground and air operations. The KW
 
 ## **5. Lifecycle and Legacy**
 
-## **6. Impacts on CIA Triad Cryptography**
+The KW-26 and its efficient encryption technologies operated throughout its usage domains within the second half of the 20th century. It served as the major encryption equipment for the U.S. military for over 25 years. The following showcases the timeline of the KW-26 across its major development periods:
+
+* 1952: The initial vacuum tube and key card with the CFD are tested by NSA engineers
+* 1953: The Burroughs Corporation begins a system design using BIMAG cores
+* 1955: The first proof of concept models are delivered, allowing for final engineering contracts to be given and signed
+* 1957: The mass production of over 1,500 units of the KW-26 begin and are integrated into the CRITICOMM network (Klein 4-10)
+
+
+
+## **6. Evaluations of CIA Triad**
 
 ## **7. Critical Analysis**
 
