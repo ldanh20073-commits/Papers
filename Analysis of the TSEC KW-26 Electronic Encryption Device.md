@@ -74,7 +74,9 @@ The new successor technology allowed for more adaptive systems and helped expand
 
 ## **6. Evaluations of CIA Triad**
 
+
+
 ## **7. Critical Analysis**
 
-## **REFERENCES**
+## **References**
 M. Klein, "Securing Record Communications: The TSEC/KW-26," National Security Agency, Center for Cryptologic History, Brochure, Fort George G. Meade, MD.
