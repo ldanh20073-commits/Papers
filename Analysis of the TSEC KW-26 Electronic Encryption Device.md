@@ -74,7 +74,13 @@ The new successor technology allowed for more adaptive systems and helped expand
 
 ## **6. Evaluations of CIA Triad**
 
+The KW-26 significantly impacted the field of cybersecurity practices during its time in use. Its effectiveness can be measured using the CIA Triad. This represents the confidentiality, integrity, and availability of a system. An effective cybersecurity system is able to employ all of these key elements. Throughout the operational deployment of the KW-26, its hardware and encryption algorithm achieved high marks on the aspects of the CIA Triad.
 
+Firstly, the KW-26 displayed a high level of confidentiality among its information. Confidentiality refers to the security and protected accessibility of sensitive data to authorized officials. Due to the complex and integrated encryption algorithm based on the Vernam modulo-2 convention, using XOR logic gates and keystreams, data was only accessible by those permitted. The system was highly secure, allowing for usage across multiple, worldwide domains. In addition to this, the use of one-time key cards in its CFD's contributed to the KW-26's ability to adhere to COMSEC protections. This ensured that data could only be accessed by the proper individuals, securing the data and information of confidential networks that used the KW-26.
+
+Furthermore, the aspect of integrity was strongly upheld with the KW-26 encryption equipment. Integrity refers to the accuracy and trustworthiness of the involved data over a period of time. The KW-26 was able to preserve and manage major encryption messages due to its multiple BIMAG cores and vacuum-tube circuits. Its messages were able to be synchronized in most cases, despite challenges resulting from transmission disruptions. Due to the implementation of its external delay compensator, using the TSEC/HW-8, most messages could be synchronized manually and restored. This permitted the protection of data and enabled transmissions using the hardware to be preserved.
+
+Finally, the KW-26 achieved an efficient level of availability in its complex systems. Availability explains how reliable the system is for authorized users to access and manage the protected data. Due to over 14,000 units of the encryption equipment being deployed around the world, all of the major usage domains of the KW-26 allowed officials and users to have access to the encryption technology. In addition, specific usage domains, such as the U.S. Navy, had further physical protections for the hardware, ensuring that officials could utilize the equipment even in harsh conditions at sea.
 
 ## **7. Critical Analysis**
 
