@@ -84,5 +84,13 @@ Finally, the KW-26 achieved an efficient level of availability in its complex sy
 
 ## **7. Critical Analysis**
 
+Through the lifecycle and development of the KW-26, major lessons were learned through the various design and implementation methods. The physical hardware and the approach during design revealed multiple issues and challenges that faced the development team. Due to the lack of command authority during the inital planning stages of the encryption equipment, the expectations set by the Department of Defense varied across the services and operation types. Since there was no single, initial model with standardized features, the cost of the produced hardware increased because new models had to be adjusted. For example, built-in options such as the low-speed underwater cables had higher costs and were often phased out shortly after the production and delivery of the KW-26 (Klein 9).
+
+In addition, the hardware equipment faced obstacles regarding environmental factors. Many of the specifcations for different terrain, such as the KW-26 for Navy domains, required more testing than expected by the engineering teams (Klein 8). This resulted in developers needing an extended timeframe to complete initial designs and adapt environmental features to the proper systems. Furthermore, the NSA leadership encountered struggles with the transition of these overall hardware features to production. The process of moving from design to production teams proved to be significantly more difficult as well.
+
+These challenges to planning and hardware development taught important lessons to the NSA and engineering practices as a whole. It required that future encryption devices were designed with more structured timeframes to account for adaptive features across multiple usage domains. Leadership within organizations also learned to become more flexible and able to better transition between the design and production stages of the development cycle.
+
+
+
 ## **References**
 M. Klein, "Securing Record Communications: The TSEC/KW-26," National Security Agency, Center for Cryptologic History, Brochure, Fort George G. Meade, MD.
