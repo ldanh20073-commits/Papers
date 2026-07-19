@@ -1,4 +1,4 @@
-# **The Life and Analysis of the TSEC KW-26 Electronic Encryption Device**
+# **Analysis of the TSEC KW-26 Electronic Encryption Device**
 
 Danh H. Le  
 da535059@ucf.edu  
