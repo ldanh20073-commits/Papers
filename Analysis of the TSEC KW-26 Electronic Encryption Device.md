@@ -98,5 +98,7 @@ As a result, practices around COMSEC were strengthened. The use of one-time key 
 
 The KW-26 heavily impacted the field of encryption and launched system technology towards a more effective and automated process. The major breakthroughs with electronic hardware, domain expansion, and algorithm design strongly enhanced the data security across the United States and its usage interests. As encryption technologies continue to develop and process in the modern world, the TSEC/KW-26 will have left a critical footprint in the history and growth of encryption systems, reshaping the future of cybersecurity.
 
+<div style="page-break-after: always;"></div>
+
 ## **References**
 M. Klein, "Securing Record Communications: The TSEC/KW-26," National Security Agency, Center for Cryptologic History, Brochure, Fort George G. Meade, MD.
