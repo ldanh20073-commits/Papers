@@ -51,7 +51,7 @@ At the same time, due to the system being synchronous between encryptions, there
 
 Across its lifetime, the KW-26 functioned as the standardized encryption equipment for electronic data security. One of its most important networks was CRITICOMM, the first communication system to use the initial 1,500 KW-26 units to support the National SIGINT mission (Klein 10). CRITTICOMM was established by the Joint Chiefs of Staff (JCS), with a heavy focus on developing secure point-to-point circuits in a cryptosystem. The KW-26 allowed for a more secure network across sensitive data structures for the government. Furthermore, the equipment was often used as the primary hardware for new organizations in the United States.
 
->In the early days of the Defense Communications Agency (DCA)the KW-26 was the principal encryptor for the AUTODIN trunks (Klein 11).
+> In the early days of the Defense Communications Agency (DCA), the KW-26 was the principal encryptor for the AUTODIN trunks (Klein 11).
 
 AUTODIN were massive communication trunks used by the DCA for automating digital networks. The KW-26 provided the security for lines within this large system. Overseas, the equipment was also adapted for use by the Navy, being placed in ships abroad and built to withstand the rough conditions of the sea (Klein 10). The equipment was placed onboard coastal ships and shore stations, being able to operate and withstand shock vibrations from enemy vessels. This helped maintain the integrity of the equipment, while also providing reliable technology for use during international conflicts.
 
@@ -72,7 +72,9 @@ At the end of the KW-26's life, the equipment was decommissioned by the NSA duri
 
 The new successor technology allowed for more adaptive systems and helped expand operations that required more effective equipment. This marked the end of the KW-26, where the encryption technology played a major role in shaping future encryption systems. The system dominated the 20th-century encryption field, and it paved the way for more advanced systems in the decades to come.
 
-## **6. Evaluations of CIA Triad**
+## **6. Critical Analysis**
+
+### **Evaluations of CIA Triad**
 
 The KW-26 significantly impacted the field of cybersecurity practices during its time in use. Its effectiveness can be measured using the CIA Triad. This represents the confidentiality, integrity, and availability of a system. An effective cybersecurity system is able to employ all of these key elements. Throughout the operational deployment of the KW-26, its hardware and encryption algorithm achieved high marks on the aspects of the CIA Triad.
 
@@ -82,7 +84,7 @@ Furthermore, the aspect of integrity was strongly upheld with the KW-26 encrypti
 
 Finally, the KW-26 achieved an efficient level of availability in its complex systems. Availability explains how reliable the system is for authorized users to access and manage the protected data. Due to over 14,000 units of the encryption equipment being deployed around the world, all of the major usage domains of the KW-26 allowed officials and users to have access to the encryption technology. In addition, specific usage domains, such as the U.S. Navy, had further physical protections for the hardware, ensuring that officials could utilize the equipment even in harsh conditions at sea.
 
-## **7. Analysis on Critical Limitations**
+### **Analysis on Limitations**
 
 Through the lifecycle and development of the KW-26, major lessons were learned through the various design and implementation methods. The physical hardware and the approach during design revealed multiple issues and challenges that faced the development team. Due to the lack of command authority during the initial planning stages of the encryption equipment, the expectations set by the Department of Defense varied across the services and operation types. Since there was no single, initial model with standardized features, the cost of the produced hardware increased because new models had to be adjusted. For example, built-in options such as the low-speed underwater cables had higher costs and were often phased out shortly after the production and delivery of the KW-26 (Klein 9).
 
@@ -90,7 +92,7 @@ In addition, the hardware equipment faced obstacles regarding environmental fact
 
 These challenges to planning and hardware development taught important lessons to the NSA and engineering practices as a whole. It required that future encryption devices were designed with more structured timeframes to account for adaptive features across multiple usage domains. Leadership within organizations also learned to become more flexible and able to better transition between the design and production stages of the development cycle.
 
-## **8. Impact on Future Encryption Technology**
+### **Impact on Future Encryption Technology**
 
 In conclusion, the KW-26 was one of the most effective encryption equipment developed and deployed across domains. It was able to establish the first electronically-powered encryption system, using automatic algorithms that upheld data security. The equipment usage was scaled and expanded throughout the U.S. military and worldwide operations. As a result, the elements of the CIA Triad were firmly represented and strongly implemented.
 
