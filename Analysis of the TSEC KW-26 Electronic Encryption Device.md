@@ -59,7 +59,7 @@ The United States Army also deployed units for ground and air operations. The KW
 
 ## **5. Lifecycle and Legacy**
 
-The KW-26 and its efficient encryption technologies operated throughout its usage domains within the second half of the 20th century. It served as the major encryption equipment for the U.S. military for over 25 years. The following showcases the timeline of the KW-26 across its major development periods:
+The KW-26 and its efficient encryption technologies operated throughout its usage domains within the second half of the 20th century. It served as the major encryption equipment for the U.S. military for over 25 years. The following showcases the timeline of the KW-26 across its major development period, which was approximately 4 to 5 years:
 
 * 1952: The initial vacuum tube and key card with the CFD are tested by NSA engineers
 * 1953: The Burroughs Corporation begins a system design using BIMAG cores
