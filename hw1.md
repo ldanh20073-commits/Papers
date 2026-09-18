@@ -321,41 +321,41 @@ int main(int argc, char* argv[]) {
 **AI output:**  
 here is a gentle look at what is causing test cases to fail in your virtual machine. we can walk through each issue step by step so you know exactly what needs fixing.
 
-* **missing required header comment**: the test script checks for the exact required header block from the pdf[cite: 1, 2]. without it, or if author still says your name here, the autograder flags an automatic zero[cite: 1, 2].
-* **cal instruction missing pc assignment**: inside `case 5: // CAL`, you properly save the static link, dynamic link, and return address, and set `bp = sp - 1;`, but you forget to jump to the target procedure[cite: 1]. you need to set `pc = irM;`[cite: 1].
+* **missing required header comment**: the test script checks for the exact required header block from the pdf. without it, or if author still says your name here, the autograder flags an automatic zero.
+* **cal instruction missing pc assignment**: inside `case 5: // CAL`, you properly save the static link, dynamic link, and return address, and set `bp = sp - 1;`, but you forget to jump to the target procedure . you need to set `pc = irM;`.
 * **opr 0 / rtn dynamic link restoration**: in your `RTN` implementation:
   ```c
   sp = bp + 1;
   bp = pas[sp - 2];
   pc = pas[sp - 3];
   ```
-  because you set `sp = bp + 1` first, `sp - 2` evaluates to `(bp + 1) - 2 = bp - 1`. according to the specification table, `BP = pas[SP - 2]` and `PC = pas[SP - 3]` must be read relative to the *new* `SP` or saved before moving `SP`[cite: 1]. specifically, `DL` is located at `bp - 1` and `RA` is at `bp - 2`[cite: 1]. in your code, `pas[sp - 3]` evaluates to `bp - 2`, which works for `pc`, but doing this clearly before altering `sp` prevents subtle stack boundary bugs.
-* **error timing and no trace lines on error**: the handout specifies that any failing instruction must produce *no* trace line; you must catch errors and exit before printing a trace[cite: 1]. currently, in your fetch step:
+  because you set `sp = bp + 1` first, `sp - 2` evaluates to `(bp + 1) - 2 = bp - 1`. according to the specification table, `BP = pas[SP - 2]` and `PC = pas[SP - 3]` must be read relative to the *new* `SP` or saved before moving `SP`. specifically, `DL` is located at `bp - 1` and `RA` is at `bp - 2`. in your code, `pas[sp - 3]` evaluates to `bp - 2`, which works for `pc`, but doing this clearly before altering `sp` prevents subtle stack boundary bugs.
+* **error timing and no trace lines on error**: the handout specifies that any failing instruction must produce *no* trace line; you must catch errors and exit before printing a trace. currently, in your fetch step:
   ```c
   if ((pc >= sp) || (pc >= 1000))
   ```
-  `pc` out of bounds must check whether `pc` is outside the loaded text segment, specifically `if (pc < 200 || pc >= 200 + 3 * ic)`[cite: 1]. checking `pc >= sp` triggers false positives when the stack grows downward[cite: 1].
-* **stack overflow bound**: stack overflow occurs when `sp <= 200 + 3 * ic - 1` (that is, when `sp` reaches or enters the last address holding code)[cite: 1]. checking `sp < (200 + 3 * ic)` causes off-by-one errors on boundary tests[cite: 1].
-* **data address out of range checks**: in `LOD` and `STO`, the valid data segment is the stack segment (from address 999 down to the code boundary)[cite: 1]. the check should ensure the target address `addr = base(bp, irL) - irM` is within `[sp, 999]` (or valid stack bounds) rather than `>= 200`[cite: 1].
-* **stack trace vertical bar tracking**: in your printing loop, you trace vertical bars by walking `pas[k - 1]`. this only works if your activation records are intact[cite: 1]. make sure you trace the dynamic chain correctly from `bp` down to `999` and print `| ` right before every activation record base except the outermost[cite: 1].
-* **missing newline formatting on errors**: each error must print an empty line followed by `Error: <message>\n`[cite: 1]. make sure every error string has the exact wording from table 4[cite: 1].
+  `pc` out of bounds must check whether `pc` is outside the loaded text segment, specifically `if (pc < 200 || pc >= 200 + 3 * ic)`. checking `pc >= sp` triggers false positives when the stack grows downward.
+* **stack overflow bound**: stack overflow occurs when `sp <= 200 + 3 * ic - 1` (that is, when `sp` reaches or enters the last address holding code). checking `sp < (200 + 3 * ic)` causes off-by-one errors on boundary tests.
+* **data address out of range checks**: in `LOD` and `STO`, the valid data segment is the stack segment (from address 999 down to the code boundary). the check should ensure the target address `addr = base(bp, irL) - irM` is within `[sp, 999]` (or valid stack bounds) rather than `>= 200`.
+* **stack trace vertical bar tracking**: in your printing loop, you trace vertical bars by walking `pas[k - 1]`. this only works if your activation records are intact. make sure you trace the dynamic chain correctly from `bp` down to `999` and print `| ` right before every activation record base except the outermost.
+* **missing newline formatting on errors**: each error must print an empty line followed by `Error: <message>\n`. make sure every error string has the exact wording from table 4.
 
 here is your verification checklist to guide your updates:
 
-* add the required comment block at the very top of `vm.c` with your name in `Author:`[cite: 1, 2].
-* add `pc = irM;` inside `case 5: // CAL`[cite: 1].
-* update `case 7: // JMP` and verify `pc` updates cleanly without extra increments[cite: 1].
+* add the required comment block at the very top of `vm.c` with your name in `Author:`.
+* add `pc = irM;` inside `case 5: // CAL`.
+* update `case 7: // JMP` and verify `pc` updates cleanly without extra increments.
 * update `RTN` to:
   ```c
   sp = bp + 1;
   pc = pas[bp - 2];
   bp = pas[bp - 1];
   ```
-* adjust the fetch bound to check if `pc < 200 || pc >= (200 + 3 * ic)`[cite: 1].
-* run `./test_vm.sh vm.c` on eustis to confirm all 28 cases pass[cite: 1, 2].
+* adjust the fetch bound to check if `pc < 200 || pc >= (200 + 3 * ic)`.
+* run `./test_vm.sh vm.c` on eustis to confirm all 28 cases pass.
 
 **What I did with it:**  
-I used this feedback to identify why my procedure calls were not jumping to their targets by adding `pc = irM;` in `CAL`[cite: 1]. I also noted the advice about separating my program counter bounds from the stack pointer[cite: 1].
+I used this feedback to identify why my procedure calls were not jumping to their targets by adding `pc = irM;` in `CAL`. I also noted the advice about separating my program counter bounds from the stack pointer.
 
 ---
 
@@ -365,12 +365,12 @@ I used this feedback to identify why my procedure calls were not jumping to thei
 how do i do the error for pc counter leaving bounds bc i got an error
 
 **AI output:**  
-the check needs to verify whether `pc` is pointing to an instruction inside the loaded text segment right at the fetch step before reading the instruction registers[cite: 1].
+the check needs to verify whether `pc` is pointing to an instruction inside the loaded text segment right at the fetch step before reading the instruction registers.
 
-because instructions are loaded starting at address 200 and each instruction takes 3 words, the loaded text segment occupies addresses from 200 up to `200 + 3 * ic - 1`[cite: 1]. in addition, instructions are read in 3-word triples (`pc`, `pc + 1`, `pc + 2`), so `pc` must point to the start of a valid instruction triple within those bounds[cite: 1].
+because instructions are loaded starting at address 200 and each instruction takes 3 words, the loaded text segment occupies addresses from 200 up to `200 + 3 * ic - 1`. in addition, instructions are read in 3-word triples (`pc`, `pc + 1`, `pc + 2`), so `pc` must point to the start of a valid instruction triple within those bounds.
 
 1. **place the check at the start of the fetch cycle**  
-   right at the top of your `while(1)` loop, before accessing `pas[pc]`, check whether `pc` has fallen below 200 or reached/exceeded the end of the loaded text segment[cite: 1]:
+   right at the top of your `while(1)` loop, before accessing `pas[pc]`, check whether `pc` has fallen below 200 or reached/exceeded the end of the loaded text segment:
    ```c
    // check if pc is outside the loaded text segment
    if (pc < 200 || pc >= (200 + 3 * ic) || (pc - 200) % 3 != 0) {
@@ -380,15 +380,15 @@ because instructions are loaded starting at address 200 and each instruction tak
    ```
 
 2. **remove the sp comparison from the pc check**  
-   delete `pc >= sp` from your bounds check[cite: 1]. comparing `pc` to `sp` belongs exclusively to stack overflow detection, not the program counter check[cite: 1].
+   delete `pc >= sp` from your bounds check. comparing `pc` to `sp` belongs exclusively to stack overflow detection, not the program counter check.
 
 3. **verify exact error format and exit code**  
-   ensure that on detecting this error, the program prints a leading blank line, the exact string `Error: program counter left the text segment\n`, and immediately returns a non-zero status without tracing the instruction[cite: 1, 2].
+   ensure that on detecting this error, the program prints a leading blank line, the exact string `Error: program counter left the text segment\n`, and immediately returns a non-zero status without tracing the instruction.
 
-to verify the fix, run `./test_vm.sh vm.c` on eustis and check that test case `e08_pc_out_of_bounds` (or the corresponding error case in `test_cases/cases.txt`) passes with exit status non-zero[cite: 1, 2].
+to verify the fix, run `./test_vm.sh vm.c` on eustis and check that test case `e08_pc_out_of_bounds` (or the corresponding error case in `test_cases/cases.txt`) passes with exit status non-zero.
 
 **What I did with it:**  
-I placed the `pc` boundary condition check right at the beginning of the fetch phase inside the main execution loop and removed `pc >= sp` so stack growth would not trigger it[cite: 1].
+I placed the `pc` boundary condition check right at the beginning of the fetch phase inside the main execution loop and removed `pc >= sp` so stack growth would not trigger it.
 
 ---
 
@@ -410,7 +410,7 @@ so i did that but i end up exiting with the error instead of running a test case
 ```
 
 **AI output:**  
-the error happens because `OPR` is popping two values (`a` and `b`) **before** checking what sub-operation it is running[cite: 1].
+the error happens because `OPR` is popping two values (`a` and `b`) **before** checking what sub-operation it is running.
 
 in your code:
 ```c
@@ -428,18 +428,18 @@ case 2: // OPR 0, M
             ...
 ```
 
-for arithmetic and relational operations (like `ADD`, `SUB`, `EQL`), popping two operands is expected[cite: 1]. however, **`RTN` (OPR 0, 0) does not take two operands**[cite: 1]. 
+for arithmetic and relational operations (like `ADD`, `SUB`, `EQL`), popping two operands is expected. however, **`RTN` (OPR 0, 0) does not take two operands**. 
 
 here is what happens during `c04_cal_rtn_single.txt`:
-1. when the procedure is called, its return address `RA = 221` is saved in the stack at address `993`[cite: 1, 3].
-2. when the procedure reaches `RTN`, `sp` is at `992`[cite: 1, 3].
-3. your code immediately pops `b` at `992` and sets it to `0`, then pops `a` at `993` and sets `pas[993] = 0`[cite: 1].
-4. you just overwrote the stored return address with `0`[cite: 1].
-5. when `RTN` executes `pc = pas[...]`, it reads that wiped value and sets `pc = 0`[cite: 1].
-6. on the very next loop iteration, `pc = 0 < 200`, which immediately triggers `Error: program counter left the text segment`[cite: 1].
+1. when the procedure is called, its return address `RA = 221` is saved in the stack at address `993`.
+2. when the procedure reaches `RTN`, `sp` is at `992`.
+3. your code immediately pops `b` at `992` and sets it to `0`, then pops `a` at `993` and sets `pas[993] = 0`.
+4. you just overwrote the stored return address with `0`.
+5. when `RTN` executes `pc = pas[...]`, it reads that wiped value and sets `pc = 0`.
+6. on the very next loop iteration, `pc = 0 < 200`, which immediately triggers `Error: program counter left the text segment`.
 
 **1. move operand popping inside the arithmetic/relational cases**  
-only sub-operations `1` through `10` should pop `a` and `b`[cite: 1]:
+only sub-operations `1` through `10` should pop `a` and `b`:
 ```c
 case 2: // OPR 0, M
     switch (irM) {
@@ -468,9 +468,9 @@ case 2: // OPR 0, M
 ```
 
 **2. trace `SYS 0 3` before exiting**  
-the specification requires `SYS 0 3` to be printed as the last traced instruction line before terminating with status `0`[cite: 1].
+the specification requires `SYS 0 3` to be printed as the last traced instruction line before terminating with status `0`.
 
-if you `return 0;` inside `case 3:` before reaching `printf`, the trace line is never printed[cite: 1]. instead, set a flag like `int halt = 0;`:
+if you `return 0;` inside `case 3:` before reaching `printf`, the trace line is never printed. instead, set a flag like `int halt = 0;`:
 * inside `case 3: // halt`: set `halt = 1;`
 * at the bottom of the loop, right after printing the trace line:
   ```c
@@ -478,10 +478,10 @@ if you `return 0;` inside `case 3:` before reaching `printf`, the trace line is 
       return 0;
   }
   ```
-this ensures `SYS 0 3` is printed and stops the loop before `pc` reaches the end of the text segment on the next cycle[cite: 1].
+this ensures `SYS 0 3` is printed and stops the loop before `pc` reaches the end of the text segment on the next cycle.
 
 **What I did with it:**  
-I learned why my return address was being overwritten with 0 during `RTN` and understood that `SYS 0 3` needed to print its trace line before the virtual machine stopped executing[cite: 1].
+I learned why my return address was being overwritten with 0 during `RTN` and understood that `SYS 0 3` needed to print its trace line before the virtual machine stopped executing.
 
 ---
 
@@ -502,14 +502,14 @@ if ((irM >= 1) && (irM <= 10)) {
 ```
 
 **AI output:**  
-yes, that works cleanly and solves the problem directly[cite: 1]. 
+yes, that works cleanly and solves the problem directly. 
 
 by guarding operand extraction with `if ((irM >= 1) && (irM <= 10))`:
-* `RTN` (`irM == 0`) is untouched, preventing it from overwriting the return address and corrupting the base pointer[cite: 1].
-* invalid sub-operations outside `[0, 10]` will bypass the pops and fall through directly into your `default:` branch to report `Error: unknown OPR sub-operation`[cite: 1].
-* operations `1` through `10` will receive `b` and `a` in the exact order required (`a` as the second item popped, `b` as the first)[cite: 1].
+* `RTN` (`irM == 0`) is untouched, preventing it from overwriting the return address and corrupting the base pointer.
+* invalid sub-operations outside `[0, 10]` will bypass the pops and fall through directly into your `default:` branch to report `Error: unknown OPR sub-operation`.
+* operations `1` through `10` will receive `b` and `a` in the exact order required (`a` as the second item popped, `b` as the first).
 
-just remember to also handle the `halt` flag so `SYS 0 3` prints its trace line before exiting[cite: 1]:
+just remember to also handle the `halt` flag so `SYS 0 3` prints its trace line before exiting:
 ```c
 case 2: // OPR 0, M
     if ((irM >= 1) && (irM <= 10)) {
@@ -533,7 +533,7 @@ case 2: // OPR 0, M
 ```
 
 **What I did with it:**  
-I added the `if ((irM >= 1) && (irM <= 10))` conditional block before my inner `switch` in `case 2` so `RTN` wouldn't pop any operands from the stack[cite: 1].
+I added the `if ((irM >= 1) && (irM <= 10))` conditional block before my inner `switch` in `case 2` so `RTN` wouldn't pop any operands from the stack.
 
 ---
 
@@ -543,13 +543,13 @@ I added the `if ((irM >= 1) && (irM <= 10))` conditional block before my inner `
 in CAL do i put the pc change first or last
 
 **AI output:**  
-you must put the `pc` change **last**[cite: 1].
+you must put the `pc` change **last**.
 
-in step 2 of the fetch-execute cycle, `pc` already advanced by 3 before the instruction started executing[cite: 1]. that advanced value of `pc` is the return address pointing to the instruction right after the call[cite: 1]. 
+in step 2 of the fetch-execute cycle, `pc` already advanced by 3 before the instruction started executing. that advanced value of `pc` is the return address pointing to the instruction right after the call. 
 
-if you overwrite `pc = irM` first, saving `pas[sp - 3] = pc` will store the procedure's start address rather than the return point, causing `RTN` to loop back to the callee forever[cite: 1].
+if you overwrite `pc = irM` first, saving `pas[sp - 3] = pc` will store the procedure's start address rather than the return point, causing `RTN` to loop back to the callee forever.
 
-the exact order inside `case 5: // CAL` is[cite: 1]:
+the exact order inside `case 5: // CAL` is:
 ```c
 case 5: // CAL L, M
     // check stack overflow before writing
@@ -569,7 +569,7 @@ case 5: // CAL L, M
 ```
 
 **What I did with it:**  
-I placed `pc = irM;` as the last statement in my `CAL` implementation to make sure `pas[sp - 3]` accurately stores the incremented return address[cite: 1].
+I placed `pc = irM;` as the last statement in my `CAL` implementation to make sure `pas[sp - 3]` accurately stores the incremented return address.
 
 ---
 
@@ -910,12 +910,12 @@ case 0: // RTN
 ```
 
 Look closely at the order:
-1. `bp = pas[bp - 1];` updates `bp` to the caller's base pointer (for example, `999`)[cite: 1].
-2. On the very next line, `pc = pas[bp - 2];` uses the **new** `bp` (`999 - 2 = 997`)[cite: 1]!
-3. `pas[997]` has never been set, so it reads `0`[cite: 1].
-4. `pc` gets set to `0`, and on the next iteration of the `while` loop, `pc < 200` triggers `Error: program counter left the text segment`[cite: 1].
+1. `bp = pas[bp - 1];` updates `bp` to the caller's base pointer (for example, `999`).
+2. On the very next line, `pc = pas[bp - 2];` uses the **new** `bp` (`999 - 2 = 997`)!
+3. `pas[997]` has never been set, so it reads `0`.
+4. `pc` gets set to `0`, and on the next iteration of the `while` loop, `pc < 200` triggers `Error: program counter left the text segment`.
 
-Save `pc` **before** you overwrite `bp` (or use temporary variables)[cite: 1]:
+Save `pc` **before** you overwrite `bp` (or use temporary variables):
 ```c
 case 0: // RTN
     sp = bp + 1;
@@ -927,15 +927,15 @@ case 0: // RTN
 
 ---
 
-There is also a second latent bug in your `LOD` and `STO` checks[cite: 1]:
+There is also a second latent bug in your `LOD` and `STO` checks:
 ```c
 // in LOD and STO:
 if (((base(bp, irL) - irM) < sp) || ((base(bp, irL) - irM) > 999))
 ```
 
-In `LOD`, you decrement `sp--` before checking the address[cite: 1]. Checking `< sp` or checking against `sp` instead of the stack boundary will cause valid stack reads to fail or trigger false errors on other test cases[cite: 1]. 
+In `LOD`, you decrement `sp--` before checking the address. Checking `< sp` or checking against `sp` instead of the stack boundary will cause valid stack reads to fail or trigger false errors on other test cases. 
 
-According to Section 5, `data address out of range` means the computed address points outside the stack segment (i.e. into the text segment or system reserved area)[cite: 1]. Compute the target address first, and verify it stays above the text segment and within memory bounds[cite: 1]:
+According to Section 5, `data address out of range` means the computed address points outside the stack segment (i.e. into the text segment or system reserved area). Compute the target address first, and verify it stays above the text segment and within memory bounds:
 ```c
 case 3: // LOD L, M
     sp--;
@@ -967,10 +967,10 @@ case 4: // STO L, M
     break;
 ```
 
-Fixing the order of `pc` and `bp` in `RTN` will immediately resolve the `pc` error on `c04_cal_rtn_single.txt`[cite: 1, 3].
+Fixing the order of `pc` and `bp` in `RTN` will immediately resolve the `pc` error on `c04_cal_rtn_single.txt`.
 
 **What I did with it:**  
-I fixed the line ordering in `RTN` so `pc` was restored before `bp` was updated, which kept `pc` from reading garbage data and triggering out-of-bounds errors[cite: 1]. I also adjusted my data address range checks in `LOD` and `STO`[cite: 1].
+I fixed the line ordering in `RTN` so `pc` was restored before `bp` was updated, which kept `pc` from reading garbage data and triggering out-of-bounds errors. I also adjusted my data address range checks in `LOD` and `STO`.
 
 ---
 
@@ -995,18 +995,18 @@ okay ty i see now. it works for that case. for the next one tho, i run into an i
 ```
 
 **AI output:**  
-The missing `|` is caused by the loop condition `while((k >= sp) && (k != 999))`[cite: 1].
+The missing `|` is caused by the loop condition `while((k >= sp) && (k != 999))`.
 
 Look at what happens right after `CAL` executes:
-1. `CAL` sets `bp = sp - 1`[cite: 1].
-2. Because `sp` has not been decremented yet (the callee hasn't run its `INC` yet), **`bp < sp`** (for instance, `bp = 991` while `sp = 992`)[cite: 1, 4].
-3. When `i` begins looping down from `999` to print the stack, `k` starts at `bp = 991`[cite: 1].
-4. Your condition checks `k >= sp` (`991 >= 992`), which evaluates to **false on the very first check**[cite: 1].
-5. The `while` loop aborts immediately without ever following `k = pas[k - 1]` up to the parent frames (`995`), completely skipping the `|` for the outer frames[cite: 1, 4].
+1. `CAL` sets `bp = sp - 1`.
+2. Because `sp` has not been decremented yet (the callee hasn't run its `INC` yet), **`bp < sp`** (for instance, `bp = 991` while `sp = 992`).
+3. When `i` begins looping down from `999` to print the stack, `k` starts at `bp = 991`.
+4. Your condition checks `k >= sp` (`991 >= 992`), which evaluates to **false on the very first check**.
+5. The `while` loop aborts immediately without ever following `k = pas[k - 1]` up to the parent frames (`995`), completely skipping the `|` for the outer frames.
 
-The dynamic chain points **upward** toward higher addresses (`991 -> 995 -> 999`), so checking `k >= sp` incorrectly cuts off the chain whenever the newest frame base sits below `sp`[cite: 1].
+The dynamic chain points **upward** toward higher addresses (`991 -> 995 -> 999`), so checking `k >= sp` incorrectly cuts off the chain whenever the newest frame base sits below `sp`.
 
-Change the inner loop condition to simply follow the chain until it reaches the outermost frame base `999`[cite: 1]:
+Change the inner loop condition to simply follow the chain until it reaches the outermost frame base `999`:
 ```c
 // print stack contents
 for (int i = 999; i >= sp; i--) {
@@ -1025,7 +1025,7 @@ printf("\n");
 ```
 
 **What I did with it:**  
-I modified the dynamic link while loop in the stack trace printer to `while (k > 0 && k != 999)` so it would traverse all the way up the stack frames and print the `|` divider accurately[cite: 1].
+I modified the dynamic link while loop in the stack trace printer to `while (k > 0 && k != 999)` so it would traverse all the way up the stack frames and print the `|` divider accurately.
 
 ---
 
@@ -1035,19 +1035,19 @@ I modified the dynamic link while loop in the stack trace printer to `while (k >
 tysm i passed almost all the cases i have a 95 on the scoring rn tysm again
 
 **AI output:**  
-getting a 95/100 on the autograder means the machine's core fetch-execute cycle, activation record dynamics, and control flow are practically solid[cite: 1, 2]. 
+getting a 95/100 on the autograder means the machine's core fetch-execute cycle, activation record dynamics, and control flow are practically solid. 
 
-to clean up the remaining 5 points, check the exact diffs generated in the test folder[cite: 1, 2]:
+to clean up the remaining 5 points, check the exact diffs generated in the test folder:
 * inspect the specific failed case by running:
   ```bash
   cat failed_cases/<case_name>/diff.txt
   ```
-* check `failed_cases/<case_name>/info.txt` to verify whether the deduction came from an exit status mismatch (e.g., returning 0 instead of non-zero on an error case) or a tiny token mismatch[cite: 2].
-* verify relational operators in `OPR`: confirm `LEQ` (case 8) is strictly `<=` and `GEQ` (case 10) is strictly `>=`[cite: 1].
-* check the required header block at the very top of `vm.c` to confirm `Author:` has your name filled in instead of the placeholder text[cite: 1, 2].
+* check `failed_cases/<case_name>/info.txt` to verify whether the deduction came from an exit status mismatch (e.g., returning 0 instead of non-zero on an error case) or a tiny token mismatch.
+* verify relational operators in `OPR`: confirm `LEQ` (case 8) is strictly `<=` and `GEQ` (case 10) is strictly `>=`.
+* check the required header block at the very top of `vm.c` to confirm `Author:` has your name filled in instead of the placeholder text.
 
 **What I did with it:**  
-I checked the failed test folder diffs and verified my relational operator edge cases to get the remaining points on the autograder[cite: 1, 2].
+I checked the failed test folder diffs and verified my relational operator edge cases to get the remaining points on the autograder.
 
 ---
 
@@ -1057,17 +1057,17 @@ I checked the failed test folder diffs and verified my relational operator edge 
 yay i did it its complete
 
 **AI output:**  
-congratulations on getting the virtual machine fully running. navigating dynamic links, the activation record stack, and the fetch-execute cycle in raw c is no small feat, and pulling together a full 100 on the autograder takes real persistence[cite: 1, 2].
+congratulations on getting the virtual machine fully running. navigating dynamic links, the activation record stack, and the fetch-execute cycle in raw c is no small feat, and pulling together a full 100 on the autograder takes real persistence.
 
-before submitting to webcourses, run through this quick final verification checklist[cite: 1]:
-* verify the file name is strictly `vm.c` in all lowercase[cite: 1, 2].
-* check the header comment block at the very top of `vm.c` to ensure `Author:` contains your full name rather than the default template text[cite: 1, 2].
-* run the clean compile check on eustis without any warnings[cite: 1, 2]:
+before submitting to webcourses, run through this quick final verification checklist:
+* verify the file name is strictly `vm.c` in all lowercase.
+* check the header comment block at the very top of `vm.c` to ensure `Author:` contains your full name rather than the default template text.
+* run the clean compile check on eustis without any warnings:
   ```bash
   gcc -Wall -Wextra -std=c11 -O2 vm.c -o vm
   ```
-* run `./test_vm.sh vm.c` one final time to confirm all 28 test cases and code requirement checks report clean passes[cite: 1, 2].
-* upload only the required files to webcourses (including the signed ai usage disclosure form and conversation log if required by the assignment guidelines)[cite: 1].
+* run `./test_vm.sh vm.c` one final time to confirm all 28 test cases and code requirement checks report clean passes.
+* upload only the required files to webcourses (including the signed ai usage disclosure form and conversation log if required by the assignment guidelines).
 
 **What I did with it:**  
-I checked my filename, verified the header comment had my name, and recompiled cleanly on Eustis with the required flags[cite: 1, 2].
+I checked my filename, verified the header comment had my name, and recompiled cleanly on Eustis with the required flags.
