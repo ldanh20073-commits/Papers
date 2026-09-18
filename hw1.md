@@ -795,7 +795,7 @@ up the stack frames and print the | divider accurately.
 
 Round 8 
 
-Prompt: omg tysm i passed almost all the cases i have a 95 on the scoring rn tysm again 
+Prompt: tysm i passed almost all the cases i have a 95 on the scoring rn tysm again 
 
 AI output: getting a 95/100 on the autograder
 means the machine's core fetch-execute cycle, activation record dynamics, and control flow are practically solid.
