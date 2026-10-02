@@ -2,7 +2,7 @@
 
 ### Prompt
 hi i was wondering if you could help me approach my program with the file attached. i have the lexeme and token matching working but im not sure what to write for the output file and also my token list is having trouble
-
+'''
 #include<stdio.h>
 #include<string.h>
 
@@ -266,7 +266,7 @@ int main(int argc, char* argv[]) {
 
 	printf("\n");
 }
-
+'''
 ### AI Output
 the issues in the token list and file writing come from how the scanner structures token data and how positions are tracked.
 
